@@ -8,22 +8,25 @@ function cardsMemory() {
       <img class="devs-logo" src="${items.image}" alt="movie picture">
       <li class="devs-name"><strong>${items.id}</strong></li>
       <li class="devs-color"><strong>Description:</strong> ${items.bgColor}</li>
+      <img class="devs-logo" src="${items.image}" alt="movie picture">
+      <li class="devs-name"><strong>${items.id}</strong></li>
+      <li class="devs-color"><strong>Description:</strong> ${items.bgColor}</li>
     </ul>
   </div>
   `;
     });
-    document.getElementsByClassName('App').innerHTML = printCard.join("")
+    document.getElementById('root').innerHTML = printCard.join("")
   }
+  cardsMemory()
 
+//   const App = () => {
+//   const el = document.createElement('div');
 
-  const App = () => {
-  cardsMemory(data.items)
-  const el = document.createElement('div');
+//   el.className = 'App';
+//   el.textContent = 'Hola mundo!';
 
-  el.className = 'App';
-  el.textContent = 'Hola mundo!';
+//   return el;
+// };
 
-  return el;
-};
-
-export default App;
+// export default App;
+export default cardsMemory;
