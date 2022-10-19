@@ -1,20 +1,23 @@
-//
-// Para incluir los diferentes sets de cartas podemos _importar_ el archivo
-// JavasSript que contenga el `export` correspondiente...
-//
-// import pokemon from '../data/pokemon/pokemon.js';
-// console.log(pokemon);
-//
-// O alternativamente podríamos cargar el JSON de forma asíncrona usando
-// `fetch` en el momento que consideremos necesario.
-//
-// fetch('./data/pokemon/pokemon.json')
-//   .then(resp => resp.json())
-//   .then(console.log)
-//   .catch(console.error);
-//
+import data from '../data/webdev/webdev.js'
 
-const App = () => {
+function cardsMemory() {
+    const printCard = data.items.map((items) => {
+      return `
+  <div class="card-container">
+    <ul class="info">
+      <img class="devs-logo" src="${items.image}" alt="movie picture">
+      <li class="devs-name"><strong>${items.id}</strong></li>
+      <li class="devs-color"><strong>Description:</strong> ${items.bgColor}</li>
+    </ul>
+  </div>
+  `;
+    });
+    document.getElementsByClassName('App').innerHTML = printCard.join("")
+  }
+
+
+  const App = () => {
+  cardsMemory(data.items)
   const el = document.createElement('div');
 
   el.className = 'App';
