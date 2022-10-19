@@ -1,12 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Memory Match</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/globals.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="./index.js"></script>
+    <title>Megafordev | Login</title>
   </head>
   <body>
-    <div id="root"></div>
-    <script src="main.js" type="module"></script>
+    <main>
+      <form class="login-form">
+        <div class="login-header">
+          <img
+            class="image-logo"
+            src="./images/megafordev.png"
+            alt="brain training logo"
+          />
+          <h1 class="title">Um mega treino da memória para Dev's</h1>
+        </div>
+
+        <input class="login-input" type="text" placeholder="name" />
+        <button class="login-button" type="submit" disabled>Play</button>
+      </form>
+    </main>
+
+    <footer>
+      <div class="box-left">
+        <p>Copyright © 2022 | Natália Evelyn | </p>
+        <a href="https://github.com/NatyEvelyn">
+          <img src="./images/github.png" class="img-github" alt="github icon" />
+        </a>
+      </div>
+      <div class="box-right">
+        <p>Turma: SAP008 | </p>
+        <a href="https://www.laboratoria.la/br">
+          <img
+            src="./images/logoLabFooter.png"
+            class="img-lab"
+            alt="laboratoria icon"
+          />
+        </a>
+      </div>
+    </footer>
   </body>
 </html>

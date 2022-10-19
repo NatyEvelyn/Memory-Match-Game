@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  border: none;
+  font-family: 'Play', sans-serif;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.90rem;
+  background-color: #dc143c;
+  padding: 0.25rem;
+  color: #fff;
+}
+
+.box-left, .box-right {
+  display: flex;
+  align-items: center;
+}
+
+.img-github {
+  width: 25px;
+}
+
+.img-lab {
+  width: 115px;
+}
