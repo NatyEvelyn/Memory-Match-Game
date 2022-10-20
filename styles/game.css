@@ -3,16 +3,8 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 15px;
   width: 100%;
-  max-width: 800px;
+  max-width: 745px;
   margin: 100px auto;
-}
-
-.card {
-  aspect-ratio: 3/4;
-  width: 100%;
-  background-color: #f88;
-  border-radius: 5px;
-  position: relative;
 }
 
 .face {
@@ -21,10 +13,33 @@
   position: absolute;
 }
 
-.front {
-  background-color: #000;
+.card-container {
+  width: 100%;
 }
 
-.back {
-  background-color: #555;
+.card {
+  aspect-ratio: 3/4;
+  width: 100%;
+  position: relative;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+.face.front {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img.logo {
+  width: 100%;
+  border-radius: 75px;
+  margin-top: 5px;
+}
+
+p.name {
+  font-size: clamp(0.5rem, 2.5vw, 1.5rem);
+  text-transform: uppercase;
 }

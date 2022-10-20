@@ -1,6 +1,6 @@
-const input = document.querySelector('.login-input');
-const button = document.querySelector('.login-button');
-const form = document.querySelector('.login-form');
+const input = document.querySelector(".login-input");
+const button = document.querySelector(".login-button");
+const form = document.querySelector(".login-form");
 //function validateInput(){}
 //console.log(event.target.value);
 /*através do evento, conseguimos recuperar o target, que seria o input.
@@ -11,18 +11,18 @@ através da object destructure = desestruturação de objetos */
 
 const validateInput = ({ target }) => {
   if (target.value.length > 1) {
-    button.removeAttribute('disabled');
+    button.removeAttribute("disabled");
     return;
   }
-    button.setAttribute('disabled', '');
-}
+  button.setAttribute("disabled", "");
+};
 
 const handleSubmit = (event) => {
   event.preventDefault();
 
-  localStorage.setItem('player', input.value);
-  window.location = './game.html';
-}
+  localStorage.setItem("player", input.value);
+  window.location = "./game.html";
+};
 
-input.addEventListener('input', validateInput);
-form.addEventListener('submit', handleSubmit);
+input.addEventListener("input", validateInput);
+form.addEventListener("submit", handleSubmit);
