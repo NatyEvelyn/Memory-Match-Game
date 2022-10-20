@@ -4,14 +4,13 @@ function cardsMemory() {
     const printCard = data.items.map((items) => {
       return `
   <div class="card-container">
-    <ul class="info">
-      <img class="devs-logo" src="${items.image}" alt="movie picture">
-      <li class="devs-name"><strong>${items.id}</strong></li>
-      <li class="devs-color"><strong>Description:</strong> ${items.bgColor}</li>
-      <img class="devs-logo" src="${items.image}" alt="movie picture">
-      <li class="devs-name"><strong>${items.id}</strong></li>
-      <li class="devs-color"><strong>Description:</strong> ${items.bgColor}</li>
-    </ul>
+    <div class="card">
+      <div class="face front" style="background-color: ${items.bgColor}">
+        <img class="logo" src="${items.image}" alt="movie picture">
+        <p class="name"><strong>${items.id}</strong></p>
+      </div>
+      <div class="face back"></div>
+    </div>
   </div>
   `;
     });
