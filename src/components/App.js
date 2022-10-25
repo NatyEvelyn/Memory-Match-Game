@@ -1,31 +1,68 @@
-import data from '../data/webdev/webdev.js'
+import data from "../data/webdev/webdev.js";
 
 function cardsMemory() {
-    const printCard = data.items.map((items) => {
-      return `
+  const element = document.createElement("div");
+  element.className = "grid";
+  const printCard = data.items.map((items) => {
+    return `
   <div class="card-container">
-    <div class="card">
-      <div class="face front" style="background-color: ${items.bgColor}">
+    <div class="flip-card">
+      <div class="flip-card-front" style="background-color: ${items.bgColor}">
         <img class="logo" src="${items.image}" alt="movie picture">
         <p class="name"><strong>${items.id}</strong></p>
       </div>
-      <div class="face back"></div>
+      <div class="flip-card-back"></div>
     </div>
   </div>
   `;
-    });
-    document.getElementById('root').innerHTML = printCard.join("")
-  }
-  cardsMemory()
+  });
 
-//   const App = () => {
-//   const el = document.createElement('div');
+  const revealCard = ({ target }) => {
+    target.parentNode.classList.add("reveal-card");
+  };
 
-//   el.className = 'App';
-//   el.textContent = 'Hola mundo!';
+  const duplicateCards = [...printCard, ...printCard];
 
-//   return el;
+  const shuffledArray = duplicateCards.sort(() => Math.random() - 0.5);
+
+  element.innerHTML = shuffledArray.join("");
+  element.addEventListener("click", revealCard);
+
+  return element;
+}
+
+export default cardsMemory;
+
+// const createElement = (tag, className) => {
+//   const element = document.createElement(tag);
+//   element.className = className;
+//   return element;
 // };
 
-// export default App;
-export default cardsMemory;
+// const createCard = (dev) => {
+//   const container = createElement("div", "card-container")
+//   const card = createElement("div", "flip-card");
+//   const front = createElement("div", "flip-card-front");
+//   const back = createElement("div", "flip-card-back");
+
+//   front.backgroundImage = ''
+
+//   container.appendChild(card);
+//   card.appendChild(front);
+//   card.appendChild(back);
+
+//   return container;
+// };
+
+// const loadGame = () => {
+
+//   devs.forEach((dev) => {
+
+//     const card = createCard();
+//     grid.appendChild(card);
+//   });
+// }
+
+// loadGame();
+
+// export default createCard;
