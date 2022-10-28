@@ -20,6 +20,7 @@
 
 ![image](https://user-images.githubusercontent.com/93155509/198506916-6e6ce935-7aef-4b15-bf16-18e4da212e3f.png)
 
+## Link do GitHub Pages agui: [MEGAFORDEV](https://natyevelyn.github.io/Memory-Match-Game/)
 
 ## Protótipo de Alta Fidelidade - Mobile First
 
