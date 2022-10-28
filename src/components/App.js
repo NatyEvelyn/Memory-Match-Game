@@ -1,68 +1,105 @@
 import data from "../data/webdev/webdev.js";
 
-function cardsMemory() {
-  const element = document.createElement("div");
-  element.className = "grid";
-  const printCard = data.items.map((items) => {
+const spanPlayer = document.querySelector(".player");
+const timer = document.querySelector(".timer");
+
+const createElement = (tag, className) => {
+  const element = document.createElement(tag);
+  element.className = className;
+  return element;
+};
+
+function createCard() {
+  const section = createElement("section", "grid");
+  const card = data.items.map((items) => {
     return `
-  <div class="card-container">
-    <div class="flip-card">
+    <div class="card" data-id="${items.id}">
       <div class="flip-card-front" style="background-color: ${items.bgColor}">
         <img class="logo" src="${items.image}" alt="movie picture">
         <p class="name"><strong>${items.id}</strong></p>
       </div>
       <div class="flip-card-back"></div>
     </div>
-  </div>
   `;
   });
 
-  const revealCard = ({ target }) => {
-    target.parentNode.classList.add("reveal-card");
-  };
-
-  const duplicateCards = [...printCard, ...printCard];
+  const duplicateCards = [...card, ...card];
 
   const shuffledArray = duplicateCards.sort(() => Math.random() - 0.5);
 
-  element.innerHTML = shuffledArray.join("");
-  element.addEventListener("click", revealCard);
+  section.innerHTML = shuffledArray.join("");
 
-  return element;
+  window.onload = () => {
+    spanPlayer.innerHTML = localStorage.getItem("player");
+    startTimer();
+  };
+
+  const startTimer = () => {
+    setInterval(() => {
+      const currentTime = +timer.innerHTML;
+      timer.innerHTML = currentTime + 1;
+    }, 1000);
+  };
+
+  let firstCard = "";
+  let secondCard = "";
+
+  const checkEndGame = () => {
+    const disabledCards = document.querySelectorAll(".disabled-card");
+
+    if (disabledCards.length === 20) {
+      alert(
+        `Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi: ${timer.innerHTML}.
+
+        Você sabe a diferença entre append() e appendTo()?
+
+        O append é para quando você tem um elemento na mão e quer colocar algo nele. Tenho uma <li> e quero inserir lá dentro alguma coisa. Ou seja, seu início é um elemento que terá coisas dentro. Já o appendTo é o contrário.`
+      );
+    }
+  };
+
+  const checkCards = () => {
+    const firstId = firstCard.getAttribute("data-id");
+    const secondId = secondCard.getAttribute("data-id");
+
+    if (firstId === secondId) {
+      firstCard.classList.add("disabled-card");
+      secondCard.classList.add("disabled-card");
+
+      firstCard = "";
+      secondCard = "";
+
+      checkEndGame();
+    } else {
+      setTimeout(() => {
+        firstCard.classList.remove("reveal-card");
+        secondCard.classList.remove("reveal-card");
+
+        firstCard = "";
+        secondCard = "";
+      }, 500);
+    }
+  };
+
+  const revealCard = ({ target }) => {
+    if (target.parentNode.className.includes("reveal-card")) {
+      return;
+    }
+
+    if (firstCard === "") {
+      target.parentNode.classList.add("reveal-card");
+      firstCard = target.parentNode;
+    } else if (secondCard === "") {
+      target.parentNode.classList.add("reveal-card");
+      secondCard = target.parentNode;
+
+      checkCards();
+    }
+  };
+
+  section.addEventListener("click", revealCard);
+
+  return section;
 }
 
-export default cardsMemory;
-
-// const createElement = (tag, className) => {
-//   const element = document.createElement(tag);
-//   element.className = className;
-//   return element;
-// };
-
-// const createCard = (dev) => {
-//   const container = createElement("div", "card-container")
-//   const card = createElement("div", "flip-card");
-//   const front = createElement("div", "flip-card-front");
-//   const back = createElement("div", "flip-card-back");
-
-//   front.backgroundImage = ''
-
-//   container.appendChild(card);
-//   card.appendChild(front);
-//   card.appendChild(back);
-
-//   return container;
-// };
-
-// const loadGame = () => {
-
-//   devs.forEach((dev) => {
-
-//     const card = createCard();
-//     grid.appendChild(card);
-//   });
-// }
-
-// loadGame();
-
-// export default createCard;
+export default createCard;
