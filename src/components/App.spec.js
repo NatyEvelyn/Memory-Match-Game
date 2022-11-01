@@ -1,8 +1,10 @@
-import App from './App.js';
+import createCard from './App.js';
 
-describe('App', () => {
+describe('createCard', () => {
   it('should render without crashing', () => {
-    const el = App();
-    expect(el instanceof HTMLElement).toBe(true);
+    const section = createCard();
+    expect(section instanceof HTMLElement).toBe(true);
   });
 });
+
+
