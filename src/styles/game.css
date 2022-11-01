@@ -82,3 +82,19 @@ p.name {
   font-size: clamp(0.5rem, 2.5vw, 1.5rem);
   text-transform: uppercase;
 }
+
+@media (min-width:320px) and (max-width:440px) {
+  .grid {
+    height: 80vh;
+  }
+}
+
+@media (min-width: 2000px) {
+  main {
+    height: 90vh;
+  }
+
+  .grid {
+    height: 95vh;
+  }
+}
