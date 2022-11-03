@@ -13,13 +13,13 @@ function createCard() {
   const section = createElement("section", "grid");
   const card = data.items.map((items) => {
     return `
-    <div class="card" data-id="${items.id}">
-      <div class="flip-card-front" style="background-color: ${items.bgColor}">
-        <img class="logo" src="${items.image}" alt="movie picture">
+    <ul class="card" data-id="${items.id}">
+      <li class="flip-card-front" style="background-color: ${items.bgColor}">
+        <img class="logo" src="${items.image}" alt="image logo">
         <p class="name"><strong>${items.id}</strong></p>
-      </div>
-      <div class="flip-card-back"></div>
-    </div>
+      </li>
+      <li class="flip-card-back"></li>
+    </ul>
   `;
   });
 
@@ -82,18 +82,20 @@ function createCard() {
   };
 
   const revealCard = ({ target }) => {
-    if (target.parentNode.className.includes("reveal-card")) {
-      return;
-    }
+    if (target.classList.contains("flip-card-back")) {
+      if (target.parentNode.className.includes("reveal-card")) {
+        return;
+      }
 
-    if (firstCard === "") {
-      target.parentNode.classList.add("reveal-card");
-      firstCard = target.parentNode;
-    } else if (secondCard === "") {
-      target.parentNode.classList.add("reveal-card");
-      secondCard = target.parentNode;
+      if (firstCard === "") {
+        target.parentNode.classList.add("reveal-card");
+        firstCard = target.parentNode;
+      } else if (secondCard === "") {
+        target.parentNode.classList.add("reveal-card");
+        secondCard = target.parentNode;
 
-      checkCards();
+        checkCards();
+      }
     }
   };
 
